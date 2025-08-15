@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+google-generativeai
+pydantic
+python-dotenv
+chromadb
+redis
