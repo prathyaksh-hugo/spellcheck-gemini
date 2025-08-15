@@ -1,0 +1,21 @@
+Would you like to top it up now?
+→
+again.
+Card Auto Top-up UI
+@Braham Signed
+@Namisha
+→ First
+(Existing users with card only)
+→ If
+MORE
+LESS
+S$
+‘22
+Cash Account balance is
+Auto Top-up amount
+here
+with
+card
+-S$ 8
+Cash account
+Card account

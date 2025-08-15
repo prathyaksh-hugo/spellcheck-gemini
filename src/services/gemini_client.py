@@ -1,4 +1,6 @@
+# src/services/gemini_client.py
 import os
+import json
 import google.generativeai as genai
 from dotenv import load_dotenv
 
@@ -10,37 +12,48 @@ class GeminiClient:
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY not found in environment variables.")
         genai.configure(api_key=self.api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        self.model = genai.GenerativeModel('gemini-2.5-flash-lite')
 
-    def correct_text_with_brand_guide(self, text: str, language: str, context_rules: str) -> str:
-        """
-        Uses Gemini to correct text according to a detailed brand guide,
-        and asks for a JSON object with the corrected text and a log of changes.
-        """
+    def correct_batch_of_sentences(self, sentences: list[str], language: str, context_rules: str) -> str:
+        """Processes a whole batch of sentences in a single API call."""
+        sentences_json_string = json.dumps(sentences)
         
         prompt = f"""
-        You are an expert proofreader and Brand Voice Guardian for "Hugosave".
-        Your task is to correct the "Original Text" by following a two-step process.
+        You are an expert proofreader and Brand Voice Guardian. Your task is to process a JSON array of sentences.
 
-        **Step 1: General Proofreading**
-        First, correct all general spelling and grammar errors using your expert knowledge of standard British English ({language}). This includes fixing typos in common words (e.g., 'appliction' -> 'application', 'mistike' -> 'mistake').
-
-        **Step 2: Brand Guideline Alignment**
-        After making general corrections, review the text and ensure it aligns perfectly with the specific "Brand Guidelines" provided below.
+        For each sentence, perform two steps:
+        1. **General Proofreading**: Correct all spelling and grammar based on standard British English ({language}). Maintain correct sentence structure and capitalization (e.g., only capitalize the first word or proper nouns).
+        2. **Brand Guideline Alignment**: Ensure the corrected sentence aligns with the provided "Brand Guidelines".
 
         **Brand Guidelines to Enforce:**
         {context_rules}
 
         **Additional Instructions:**
-        - **Jargon Handling**: Recognize and preserve common technical or UX jargon (e.g., 'px' for pixels) even if it is not in the brand guide.
-        - **List Handling**: If the 'Original Text' is a comma-separated list, correct each item individually and return the full, corrected, comma-separated list.
-        - **Hashtag Rule**: Hashtags (words starting with #) must always be in lowercase.
-        - **Output Format**: Your response MUST be a single, valid JSON object with two keys: `corrected_text` and `corrections_log`.
-        - **Logging**: In the `corrections_log`, explain every change you made, whether it was a general correction or a brand-specific one.
+        - **Rule Precedence**: Brand Guidelines for proper nouns (e.g., 'Roundups') ALWAYS override standard English capitalization.
+        - **Output Format**: Your response MUST be a single, valid JSON object with one key: "results". The value should be an array of objects, one for each input sentence. Each object must have:
+          - "original_text": The original sentence.
+          - "corrected_text": The corrected sentence.
+          - "is_correct": A boolean (true if no changes were made).
+          - "corrections_log": An array of objects detailing every change. Each log object must have "type", "original", and "corrected" keys.
 
+        **Example Response Format:**
+        {{
+          "results": [
+            {{
+              "original_text": "please login to see your save account",
+              "corrected_text": "Please Sign in to see your Save Account.",
+              "is_correct": false,
+              "corrections_log": [
+                {{ "type": "Brand Rule", "original": "login", "corrected": "Sign in" }},
+                {{ "type": "Capitalization", "original": "save account", "corrected": "Save Account" }}
+              ]
+            }}
+          ]
+        }}
+        
         ---
-        **Original Text:**
-        "{text}"
+        **Original Sentences (JSON Array):**
+        {sentences_json_string}
 
         **Your JSON Response:**
         """
@@ -50,9 +63,4 @@ class GeminiClient:
             return response.text
         except Exception as e:
             print(f"Error calling Gemini API: {e}")
-            return f'{{"corrected_text": "{text}", "corrections_log": ["Error processing request." ]}}'
-
-    def correct_text(self, text: str, language: str = "en-GB") -> str:
-        """(This is the older method, kept for reference but not used by the new SpellChecker)"""
-        # ... (code for this method remains unchanged) ...
-        return text
+            return '{ "results": [] }'

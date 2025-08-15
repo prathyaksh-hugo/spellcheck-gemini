@@ -12,3 +12,6 @@ class FeedbackRequest(BaseModel):
     original_text: str
     corrected_text: str
     suggested_text: str | None = None
+
+class IgnoreRequest(BaseModel):
+    word: str

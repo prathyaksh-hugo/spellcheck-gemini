@@ -71,7 +71,7 @@
   },
   {
     "rule_type": "Formatting",
-    "content": "Date Formatting Rule: Use 'Monday, 24 March 2025' for long form. Use 'Mon, 24 Mar ‘25' for compact displays.",
+    "content": "Date Formatting Rule: Use 'Monday, 24 March 2025' for long form. Use 'Mon, 24 Mar \u201825' for compact displays.",
     "source": "Grammar, Punctuation & Formatting Rules"
   },
   {
@@ -91,7 +91,7 @@
   },
   {
     "rule_type": "Terminology",
-    "content": "Defined Proper Noun: Wealthcare. This is an official brand term and must be capitalized. The registered trademark symbol ® can be used.",
+    "content": "Defined Proper Noun: Wealthcare. This is an official brand term and must be capitalized. The registered trademark symbol \u00ae can be used.",
     "source": "Terminology & Naming Conventions"
   },
   {
@@ -288,5 +288,40 @@
     "rule_type": "Constraint",
     "content": "Character Limit for Tooltips/Microcopy: 100 characters maximum.",
     "source": "Character Limits"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$15' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$50' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$250' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$100' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$500' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$613.20' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$15' are valid.",
+    "source": "Learned from user feedback"
   }
 ]
