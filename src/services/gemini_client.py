@@ -15,37 +15,39 @@ class GeminiClient:
         self.model = genai.GenerativeModel('gemini-2.5-flash-lite')
 
     def correct_batch_of_sentences(self, sentences: list[str], language: str, context_rules: str) -> str:
-        """Processes a whole batch of sentences in a single API call."""
+        """Processes a batch of sentences and categorizes the corrections."""
         sentences_json_string = json.dumps(sentences)
-        
+    
         prompt = f"""
         You are an expert proofreader and Brand Voice Guardian. Your task is to process a JSON array of sentences.
+        For each sentence, you will perform two types of analysis:
 
-        For each sentence, perform two steps:
-        1. **General Proofreading**: Correct all spelling and grammar based on standard British English ({language}). Maintain correct sentence structure and capitalization (e.g., only capitalize the first word or proper nouns).
-        2. **Brand Guideline Alignment**: Ensure the corrected sentence aligns with the provided "Brand Guidelines".
+        1.  **Typo & Brand Rule Analysis**: Check for simple errors like spelling mistakes, punctuation, and capitalization based on the provided "Brand Guidelines".
+        2.  **Grammar & UX Writing Analysis**: Rewrite the sentence to improve its clarity, tone, and grammatical structure, making it more professional and user-friendly.
 
         **Brand Guidelines to Enforce:**
         {context_rules}
 
-        **Additional Instructions:**
-        - **Rule Precedence**: Brand Guidelines for proper nouns (e.g., 'Roundups') ALWAYS override standard English capitalization.
-        - **Output Format**: Your response MUST be a single, valid JSON object with one key: "results". The value should be an array of objects, one for each input sentence. Each object must have:
-          - "original_text": The original sentence.
-          - "corrected_text": The corrected sentence.
-          - "is_correct": A boolean (true if no changes were made).
-          - "corrections_log": An array of objects detailing every change. Each log object must have "type", "original", and "corrected" keys.
+        **Output Format:**
+        Your response MUST be a single, valid JSON object with one key: "results".
+        The value should be an array of objects, one for each input sentence. Each object must have:
+        - "original_text": The original sentence.
+        - "is_correct": A boolean (true if NO changes of any kind were made).
+        - "corrections": An array of objects detailing every change. Each correction object must have:
+            - "type": The category of the correction. Must be either "TYPO_BRAND" or "UX_WRITING".
+            - "original": The specific word or phrase that was changed.
+            - "suggestion": The corrected text.
 
-        **Example Response Format:**
+        **Example Response:**
         {{
           "results": [
             {{
-              "original_text": "please login to see your save account",
-              "corrected_text": "Please Sign in to see your Save Account.",
+              "original_text": "manige your cash accountt",
               "is_correct": false,
-              "corrections_log": [
-                {{ "type": "Brand Rule", "original": "login", "corrected": "Sign in" }},
-                {{ "type": "Capitalization", "original": "save account", "corrected": "Save Account" }}
+              "corrections": [
+                {{ "type": "TYPO_BRAND", "original": "manige", "suggestion": "manage" }},
+                {{ "type": "TYPO_BRAND", "original": "accountt", "suggestion": "Account" }},
+                {{ "type": "UX_WRITING", "original": "manige your cash accountt", "suggestion": "Manage your Cash Account." }}
               ]
             }}
           ]
