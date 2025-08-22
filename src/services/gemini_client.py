@@ -1,4 +1,3 @@
-# src/services/gemini_client.py
 import os
 import json
 import google.generativeai as genai
@@ -60,7 +59,10 @@ class GeminiClient:
         **Your JSON Response:**
         """
         try:
-            generation_config = genai.types.GenerationConfig(response_mime_type="application/json")
+            generation_config = genai.types.GenerationConfig(
+                response_mime_type="application/json",
+                temperature=0 
+            )
             response = self.model.generate_content(prompt, generation_config=generation_config)
             return response.text
         except Exception as e:

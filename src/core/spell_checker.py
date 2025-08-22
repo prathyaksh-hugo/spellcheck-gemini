@@ -4,14 +4,11 @@ import chromadb
 import google.generativeai as genai
 from ..services.gemini_client import GeminiClient
 
-# Define a character limit for each chunk to stay safely under the API's payload size limit.
-CHARACTER_LIMIT_PER_CHUNK = 15000
-
 class SpellChecker:
     def __init__(self, client: GeminiClient):
         self.client = client
         db_client = chromadb.PersistentClient(path="db")
-        self.collection = db_client.get_collection(name="brand_voice_guide")
+        self.collection = db_client.get_collection(name="unified_knowledge_base") # Corrected collection name
 
     def _find_relevant_rules(self, text_list: list[str]) -> str:
         """Queries ChromaDB to find relevant rules for a list of texts."""
@@ -41,7 +38,7 @@ class SpellChecker:
         response_str = self.client.correct_batch_of_sentences(
             chunk, "en-GB", relevant_rules
         )
-        
+        print(f"--- RAW RESPONSE FROM GEMINI ---\n{response_str}\n---------------------------------")
         try:
             response_json = json.loads(response_str)
             return response_json.get("results", [])
@@ -51,38 +48,15 @@ class SpellChecker:
 
     def batch_check_sentences(self, sentences: list[str]) -> list:
         """
-        Checks a large list of sentences by dynamically creating chunks based on character count.
+        Checks a list of sentences in a single batch without chunking.
+        WARNING: This may fail if the total character count is too high.
         """
         if not sentences:
             return []
 
-        all_results = []
-        current_chunk = []
-        current_char_count = 0
-        chunk_num = 1
-
-        for sentence in sentences:
-            sentence_len = len(sentence)
-            
-            # If adding the next sentence would exceed the limit, process the current chunk.
-            if current_chunk and (current_char_count + sentence_len > CHARACTER_LIMIT_PER_CHUNK):
-                print(f"Processing chunk {chunk_num} with {len(current_chunk)} sentences ({current_char_count} chars)...")
-                chunk_results = self._process_chunk(current_chunk)
-                all_results.extend(chunk_results)
-                
-                # Reset for the next chunk
-                current_chunk = []
-                current_char_count = 0
-                chunk_num += 1
-
-            # Add the current sentence to the chunk
-            current_chunk.append(sentence)
-            current_char_count += sentence_len
-
-        # Process the final remaining chunk after the loop finishes
-        if current_chunk:
-            print(f"Processing final chunk {chunk_num} with {len(current_chunk)} sentences ({current_char_count} chars)...")
-            chunk_results = self._process_chunk(current_chunk)
-            all_results.extend(chunk_results)
+        print(f"Processing all {len(sentences)} sentences in a single batch...")
+        
+        # Directly process the entire list as one chunk
+        all_results = self._process_chunk(sentences)
 
         return all_results
