@@ -18,6 +18,11 @@ KNOWLEDGE_BASE_DIR = "data/knowledge_bases"
 DB_PATH = "db"
 COLLECTION_NAME = "unified_knowledge_base"
 
+if not os.path.isdir(KNOWLEDGE_BASE_DIR):
+    print(f"Error: Knowledge base directory not found at '{KNOWLEDGE_BASE_DIR}'")
+    print("Please create the directory and add your .json knowledge files to it.")
+    exit() # Stop the script if the folder is missing
+
 # --- Database Setup ---
 client = chromadb.PersistentClient(path=DB_PATH)
 if COLLECTION_NAME in [c.name for c in client.list_collections()]:
@@ -48,7 +53,7 @@ for filename in os.listdir(KNOWLEDGE_BASE_DIR):
                 doc_id_counter += 1
 
 if not all_contents:
-    print("No documents found to ingest.")
+    print("No documents found to ingest in the knowledge base directory.")
 else:
     print(f"Found {len(all_contents)} total rules to process.")
     # Generate embeddings in a single batch

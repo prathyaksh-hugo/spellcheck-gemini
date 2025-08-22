@@ -1,0 +1,327 @@
+[
+  {
+    "rule_type": "Tone",
+    "content": "Brand Voice Pillar: Friendly. The tone should be warm, conversational, and approachable.",
+    "source": "Tone of Voice"
+  },
+  {
+    "rule_type": "Tone",
+    "content": "Brand Voice Pillar: Credible. The tone should be accurate, precise, and avoid overpromising. Use data or clear instructions where needed.",
+    "source": "Tone of Voice"
+  },
+  {
+    "rule_type": "Tone",
+    "content": "Brand Voice Pillar: Empowering. The tone should encourage user action and clearly explain next steps and choices.",
+    "source": "Tone of Voice"
+  },
+  {
+    "rule_type": "Tone",
+    "content": "Tone for Onboarding: During user onboarding, the tone should be friendly and educational, explaining benefits simply.",
+    "source": "How tone shifts by journey"
+  },
+  {
+    "rule_type": "Tone",
+    "content": "Tone for Transaction Success: For successful transactions, the tone should be celebratory, concise, and provide clear next steps.",
+    "source": "How tone shifts by journey"
+  },
+  {
+    "rule_type": "Tone",
+    "content": "Tone for Errors: For error messages, the tone must be empathetic, actionable, and solution-oriented. Explain the problem and the fix.",
+    "source": "How tone shifts by journey"
+  },
+  {
+    "rule_type": "Tone",
+    "content": "Tone for Security/Privacy: For security and privacy-related flows, the tone should be more formal and precise.",
+    "source": "How tone shifts by journey"
+  },
+  {
+    "rule_type": "Style",
+    "content": "Language Standard: Use British English (e.g., use 'u' in words like 'colour'; use 's' rather than 'z' in words like 'organise').",
+    "source": "Content Style Guide"
+  },
+  {
+    "rule_type": "Style",
+    "content": "Case Rule: Use Sentence case for all headings, titles, and UI labels. Example: 'Add money to your account'.",
+    "source": "Content Style Guide"
+  },
+  {
+    "rule_type": "Punctuation",
+    "content": "Punctuation Rule: Use the Oxford comma. A comma should be used before the final 'and' in a list of three or more items.",
+    "source": "Content Style Guide"
+  },
+  {
+    "rule_type": "Style",
+    "content": "Person Rule: Prefer the second person ('you', 'your') for instructions and calls-to-action. Example: 'Add money to your Save account'. Use the first person ('I', 'my') only to emphasize user ownership. Example: 'My Save Account'.",
+    "source": "Content Style Guide"
+  },
+  {
+    "rule_type": "Style",
+    "content": "Contractions Rule: Use moderate, natural-sounding contractions like 'you'll', 'we're', and 'it's'. Avoid overly informal contractions like 'gonna' or 'wanna'.",
+    "source": "Content Style Guide"
+  },
+  {
+    "rule_type": "Style",
+    "content": "Readability Rule: Aim for an 8th-grade reading level. Use short, direct sentences and common words. One idea per sentence.",
+    "source": "Content Style Guide"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Numbers Rule: Use numerals (1, 2, 3) for all lists, amounts, and figures. Only spell out numbers if essential for tone.",
+    "source": "Grammar, Punctuation & Formatting Rules"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Date Formatting Rule: Use 'Monday, 24 March 2025' for long form. Use 'Mon, 24 Mar \u201825' for compact displays.",
+    "source": "Grammar, Punctuation & Formatting Rules"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Time Formatting Rule: Use a 12-hour clock with lowercase 'am' or 'pm' and no space. Example: '2:18pm'.",
+    "source": "Grammar, Punctuation & Formatting Rules"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Currency Formatting Rule: Prefix the currency symbol with a space. Always show two decimal places. Example: 'S$ 100.00'.",
+    "source": "Grammar, Punctuation & Formatting Rules"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Hugosave. This is the official brand name and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Wealthcare. This is an official brand term and must be capitalized. The registered trademark symbol \u00ae can be used.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Smarter Spending. This is an official brand term and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: HugoHub. This is an official, HugoHub-specific term and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Hugohero. This is an official brand term and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Hugoheroes. This is an official brand term and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Homescreen. This is an official product term and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Save Account. This is an official product name and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Spend Account. This is an official product name and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Cash Account. This is an official product name and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Multi-currency Account. This is an official product name and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Debit Card or Hugosave Visa Platinum Debit Card. These are official product names and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Pots. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Rewards Centre. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Quests. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Referrals. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Roundups. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Auto Top-up. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Invest-as-you-spend. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Net Worth. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Portfolio Composition. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Investment Personality Quiz. This is an official product feature and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun: Defender, Mediator, Adventurer. These are official terms related to the Investment Personality Quiz and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Acronym: KYC (Know Your Customer). This should be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Acronym: Singpass. This is a proper noun and must be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Acronym: eDDA (electronic Direct Debit Authorisation). This should be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Acronym: T&Cs (Terms & Conditions). This should be capitalized.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Terminology",
+    "content": "Defined Proper Noun (HugoHub-specific): HugoHub, Customer, End-Customer, Wallet. These should be capitalized when used in the HugoHub context.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Principle",
+    "content": "General Principle: Treat all defined terms as proper nouns and capitalize them consistently.",
+    "source": "Terminology & Naming Conventions"
+  },
+  {
+    "rule_type": "Microcopy",
+    "content": "Headings Rule: Keep headings short and descriptive. Prefer verb phrases like 'Add money', not full sentences.",
+    "source": "Microcopy & UI Elements"
+  },
+  {
+    "rule_type": "Microcopy",
+    "content": "Button/CTA Rule: Keep button text action-oriented and concise (under 20 characters). Start with a verb. Examples: 'Top up', 'Withdraw'.",
+    "source": "Microcopy & UI Elements"
+  },
+  {
+    "rule_type": "Microcopy",
+    "content": "Input Field Rule: Labels must be persistent and always visible. Placeholders should only show an example of the required input, not instructions.",
+    "source": "Microcopy & UI Elements"
+  },
+  {
+    "rule_type": "Do/Don't",
+    "content": "Correction Rule: Use 'Sign in'. DO NOT use 'Log in', 'Sign-in', or 'Login'.",
+    "source": "Do / Don't Examples"
+  },
+  {
+    "rule_type": "Do/Don't",
+    "content": "Correction Rule: For confirmation prompts, prefer short questions like 'Save changes?'. AVOID longer, wordy versions like 'Would you like to save your changes?'.",
+    "source": "Do / Don't Examples"
+  },
+  {
+    "rule_type": "Do/Don't",
+    "content": "Correction Rule: For confirmation of an action, prefer past tense like 'Message has been sent'. AVOID ambiguous phrases like 'Message sent'.",
+    "source": "Do / Don't Examples"
+  },
+  {
+    "rule_type": "Do/Don't",
+    "content": "Correction Rule: Prefer using the second person 'your'. For example, the correct phrasing is 'Add money to your Save account'. AVOID 'Add money to my Save account'.",
+    "source": "Do / Don't Examples"
+  },
+  {
+    "rule_type": "Accessibility",
+    "content": "Accessibility Rule: Use plain language and short sentences. Provide clear, descriptive labels for all input fields and buttons. Avoid vague labels like 'Click Here' or 'Submit'.",
+    "source": "Accessibility & Inclusivity"
+  },
+  {
+    "rule_type": "Localisation",
+    "content": "Localisation Rule: Avoid using idioms, metaphors, slang, or culturally specific references that may not translate well.",
+    "source": "Localisation & Translation Guidance"
+  },
+  {
+    "rule_type": "Constraint",
+    "content": "Character Limit for Buttons/CTAs: 20 characters maximum, but aim for less.",
+    "source": "Character Limits"
+  },
+  {
+    "rule_type": "Constraint",
+    "content": "Character Limit for Headings: 30 characters recommended.",
+    "source": "Character Limits"
+  },
+  {
+    "rule_type": "Constraint",
+    "content": "Character Limit for Tooltips/Microcopy: 100 characters maximum.",
+    "source": "Character Limits"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$15' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$50' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$250' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$100' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$500' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$613.20' are considered valid and should not be flagged as errors.",
+    "source": "Learned from user feedback"
+  },
+  {
+    "rule_type": "Formatting",
+    "content": "Formatting Rule: Currency formats like 'S$15' are valid.",
+    "source": "Learned from user feedback"
+  }
+]
