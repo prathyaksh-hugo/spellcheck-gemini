@@ -1,0 +1,72 @@
+[
+  {
+    "category": "Defined Terminology",
+    "guideline": "Use 'Wealthcare', 'Goldback', and 'Cashback' as single, closed-compound words.",
+    "incorrect_example": "We offer great Cash back rewards.",
+    "correct_example": "We offer great Cashback rewards.",
+    "explanation": "To maintain brand consistency, our proprietary product terms like 'Wealthcare', 'Goldback', and 'Cashback' are always written as one word."
+  },
+  {
+    "category": "Capitalization",
+    "guideline": "Brand and community names like Hugosave, HugoHub, Hugohero, and Hugoheroes must always be capitalized when used in normal text (outside hashtags).",
+    "incorrect_example": "Join the hugoheroes community.",
+    "correct_example": "Join the Hugoheroes community.",
+    "explanation": "Our brand, product, and community names are proper nouns and always start with a capital letter."
+  },
+  {
+    "category": "Hashtags",
+    "guideline": "In hashtags, keep all letters lowercase, even for brand or product terms.",
+    "incorrect_example": "Join the #HugoHeroes movement.",
+    "correct_example": "Join the #hugoheroes movement.",
+    "explanation": "On social platforms, hashtags are styled in lowercase for consistency and discoverability."
+  },
+  {
+    "category": "Capitalization",
+    "guideline": "Specific product features and account names must be capitalized as proper nouns.",
+    "incorrect_example": "Transfer money from your spend account to your save account.",
+    "correct_example": "Transfer money from your Spend Account to your Save Account.",
+    "explanation": "To ensure brand consistency, product features like 'Spend Account', 'Save Account', 'Rewards Centre', 'Multi-currency Account', and 'Debit Card' are always capitalized."
+  },
+  {
+    "category": "Compound Words",
+    "guideline": "Use hyphenated compound words for specific actions like 'Top-up' and 'Refer-a-friend'.",
+    "incorrect_example": "You can topup your account now.",
+    "correct_example": "You can Top-up your account now.",
+    "explanation": "Specific action-related terms are hyphenated for clarity and brand style. Examples: 'Top-up', 'Refer-a-friend'."
+  },
+  {
+    "category": "Spelling",
+    "guideline": "Use British English spelling. Use 's' instead of 'z' and do not omit the 'u' in words like 'colour'.",
+    "incorrect_example": "The localization and color settings are customized.",
+    "correct_example": "The localisation and colour settings are customised.",
+    "explanation": "Our brand's voice uses British English. This includes spellings like 'colour' (not 'color'), 'customise' (not 'customize'), and 'localisation' (not 'localization')."
+  },
+  {
+    "category": "Abbreviations",
+    "guideline": "Avoid abbreviations for common words like 'account' or 'number'.",
+    "incorrect_example": "Please enter your acc. no.",
+    "correct_example": "Please enter your account number.",
+    "explanation": "Write words out in full to ensure clarity and accessibility for all users. Avoid abbreviations like 'Acc.' for 'Account' or 'No.' for 'Number'."
+  },
+  {
+    "category": "Capitalization",
+    "guideline": "The term 'Cash Account' must be capitalized as a proper noun.",
+    "incorrect_example": "Manage roundups from your cash account.",
+    "correct_example": "Manage roundups from your Cash Account.",
+    "explanation": "To ensure brand consistency, the official product name 'Cash Account' is always capitalized."
+  },
+  {
+    "category": "Punctuation",
+    "guideline": "Ensure proper punctuation in sentences. Avoid missing or misplaced full stops and commas.",
+    "incorrect_example": "Please enter your account number it is required",
+    "correct_example": "Please enter your account number. It is required.",
+    "explanation": "Use punctuation marks like full stops and commas correctly to improve readability."
+  },
+  {
+    "category": "Validation",
+    "guideline": "Do not flag correct brand names as errors. Only mark them when casing, spacing, or spelling is incorrect.",
+    "incorrect_example": "Activate your Hugosave Debit Card.",
+    "correct_example": "Activate your Hugosave Debit Card.",
+    "explanation": "If the brand term already matches the defined dictionary exactly, it should not be flagged as a typo."
+  }
+]

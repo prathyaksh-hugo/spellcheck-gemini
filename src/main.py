@@ -1,4 +1,5 @@
 # src/main.py
+from importlib import metadata
 import time
 import json
 import sqlite3
@@ -79,24 +80,50 @@ def add_to_simple_ignore_list(word: str):
 
 
 # --- API Endpoints ---
-@app.get("/health", status_code=200)
-def health_check():
-    """Health check endpoint to ensure the service is running."""
-    return {"status": "ok"}
-
-@app.post("/v1/check")
-async def check_spelling(request: SpellCheckRequest):
-    """Processes a batch of texts with a single AI call."""
+@app.post("/v1/spell-check")
+async def spell_check(request: SpellCheckRequest):
+    """Runs only the typo and brand rule check."""
     start_time = time.time()
-    batch_results = spell_checker.batch_check_sentences(request.texts)
+    batch_results = spell_checker.batch_check_sentences(request.texts, "TYPO_BRAND")
     end_time = time.time()
-    processing_time_ms = int((end_time - start_time) * 1000)
+    
+  
     metadata = Metadata(
         total_processed=len(batch_results),
-        processing_time_ms=processing_time_ms,
-        model_version="1.3.0-final"
+        processing_time_ms=int((end_time - start_time) * 1000),
+        model_version="3.0.0-categorized"
     )
     return {"results": batch_results, "metadata": metadata}
+
+@app.post("/v1/content-check")
+async def content_check(request: SpellCheckRequest):
+    """Runs only the grammar and UX writing check."""
+    start_time = time.time()
+
+    # --- THIS IS THE FIX ---
+    # Filter the list to only include sentences with more than 3 words.
+    texts_to_check = [
+        sentence for sentence in request.texts if len(sentence.split()) > 3
+    ]
+    
+    if not texts_to_check:
+        # If no sentences meet the criteria, return an empty result immediately.
+        return {"results": [], "metadata": {
+            "total_processed": 0,
+            "processing_time_ms": int((time.time() - start_time) * 1000),
+            "model_version": "3.0.0-categorized"
+        }}
+
+    batch_results = spell_checker.batch_check_sentences(texts_to_check, "UX_WRITING")
+    
+    end_time = time.time()
+    metadata = Metadata(
+        total_processed=len(batch_results),
+        processing_time_ms=int((end_time - start_time) * 1000),
+        model_version="3.0.0-categorized"
+    )
+    return {"results": batch_results, "metadata": metadata}
+
 
 @app.post("/v1/ignore")
 async def handle_ignore_request(request: IgnoreRequest):

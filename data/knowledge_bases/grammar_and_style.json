@@ -1,0 +1,58 @@
+[
+  {
+    "category": "Grammar",
+    "guideline": "Use present tense when describing product actions and states, not future tense.",
+    "incorrect_example": "Your message will be sent once you press the button.",
+    "correct_example": "Your message is sent once you press the button.",
+    "explanation": "Present tense makes product behavior feel immediate, direct, and clear to users."
+  },
+  {
+    "category": "Grammar",
+    "guideline": "Use active voice instead of passive voice.",
+    "incorrect_example": "The report was written by the marketing team.",
+    "correct_example": "The marketing team wrote the report.",
+    "explanation": "Active voice is stronger, more direct, and easier to understand."
+  },
+  {
+    "category": "Grammar",
+    "guideline": "Use consistent parallel verb forms in lists (e.g., all gerunds).",
+    "incorrect_example": "Our community is about spending, savings, and to invest better.",
+    "correct_example": "Our community is about spending, saving, and investing better.",
+    "explanation": "Parallel structure makes lists smoother and more professional."
+  },
+  {
+    "category": "Grammar",
+    "guideline": "Use the second person ('You', 'Your') instead of third person ('The user').",
+    "incorrect_example": "The user must add a beneficiary before a nomination can be made.",
+    "correct_example": "You must add a beneficiary before you can nominate someone.",
+    "explanation": "Second person keeps instructions direct and personal."
+  },
+  {
+    "category": "Grammar",
+    "guideline": "Use contractions like 'don't', 'won't', and 'you're' for a natural and professional tone.",
+    "incorrect_example": "You will not be able to proceed without completing this step.",
+    "correct_example": "You won't be able to proceed without completing this step.",
+    "explanation": "Standard contractions improve readability and make text sound more conversational."
+  },
+  {
+    "category": "Grammar",
+    "guideline": "Ensure subject–verb agreement is correct.",
+    "incorrect_example": "The results of the test is available now.",
+    "correct_example": "The results of the test are available now.",
+    "explanation": "Singular subjects take singular verbs, plural subjects take plural verbs."
+  },
+  {
+    "category": "Grammar",
+    "guideline": "Avoid double negatives in sentences.",
+    "incorrect_example": "You can’t do nothing without completing this step.",
+    "correct_example": "You can’t do anything without completing this step.",
+    "explanation": "Double negatives confuse meaning and should be replaced with correct wording."
+  },
+  {
+    "category": "Grammar",
+    "guideline": "Ensure pronouns match their antecedents in number and gender.",
+    "incorrect_example": "Each user must update their profile if they want to continue.",
+    "correct_example": "Each user must update his or her profile if he or she wants to continue.",
+    "explanation": "Pronouns must agree with their antecedents to avoid ambiguity. Where possible, rewrite to plural for clarity (e.g., 'All users must update their profiles')."
+  }
+]

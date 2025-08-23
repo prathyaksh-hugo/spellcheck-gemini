@@ -8,10 +8,13 @@ class SpellChecker:
     def __init__(self, client: GeminiClient):
         self.client = client
         db_client = chromadb.PersistentClient(path="db")
-        self.collection = db_client.get_collection(name="unified_knowledge_base") # Corrected collection name
+        self.collection = db_client.get_collection(name="unified_knowledge_base")
+        print("SpellChecker initialized and connected to DB.")
 
-    def _find_relevant_rules(self, text_list: list[str]) -> str:
-        """Queries ChromaDB to find relevant rules for a list of texts."""
+    def _find_relevant_rules(self, text_list: list[str], source_id: str) -> str:
+        if not text_list:
+            return "No text provided for context search."
+            
         combined_text = ", ".join(text_list)
         embedding = genai.embed_content(
             model="models/text-embedding-004",
@@ -21,42 +24,68 @@ class SpellChecker:
         
         results = self.collection.query(
             query_embeddings=[embedding],
-            n_results=15
+            n_results=15,
+            where={"source": source_id} 
         )
         
-        if not results['documents'] or not results['documents'][0]:
-            return "No specific rules found."
+        if not results or not results.get('documents') or not results['documents'][0]:
+            print(f"Warning: No specific rules found in the database for source: '{source_id}'")
+            return "No specific brand rules found."
             
         return "\n".join([f"- {doc}" for doc in results['documents'][0]])
 
-    def _process_chunk(self, chunk: list[str]) -> list:
-        """Helper function to process a single chunk and handle API calls."""
-        if not chunk:
-            return []
-        
-        relevant_rules = self._find_relevant_rules(chunk)
-        response_str = self.client.correct_batch_of_sentences(
-            chunk, "en-GB", relevant_rules
-        )
-        print(f"--- RAW RESPONSE FROM GEMINI ---\n{response_str}\n---------------------------------")
-        try:
-            response_json = json.loads(response_str)
-            return response_json.get("results", [])
-        except json.JSONDecodeError:
-            print(f"Failed to decode JSON from Gemini API for a chunk.")
-            return []
-
-    def batch_check_sentences(self, sentences: list[str]) -> list:
-        """
-        Checks a list of sentences in a single batch without chunking.
-        WARNING: This may fail if the total character count is too high.
-        """
+    def _process_sentences(self, sentences: list[str], check_type: str) -> list:
         if not sentences:
             return []
-
-        print(f"Processing all {len(sentences)} sentences in a single batch...")
         
-        # Directly process the entire list as one chunk
-        all_results = self._process_chunk(sentences)
+        source_map = {
+            "TYPO_BRAND": "spelling_and_terminology",
+            "UX_WRITING": "grammar_and_style"
+        }
+        
+        source_id = source_map.get(check_type)
+        if not source_id:
+            print(f"Error: Invalid check_type '{check_type}'. Cannot find relevant rules.")
+            return []
 
-        return all_results
+        print(f"Finding relevant rules from source: '{source_id}'...")
+        relevant_rules = self._find_relevant_rules(sentences, source_id)
+        
+        response_str = self.client.correct_batch_of_sentences(
+            sentences, "en-GB", relevant_rules, check_type
+        )
+        
+        try:
+            response_json = json.loads(response_str)
+            results = response_json.get("results", [])
+            
+            # ✅ Fix: Only mark is_correct = false if suggestion differs
+            cleaned_results = []
+            for r in results:
+                original = r.get("original_text")
+                corrections = r.get("corrections", [])
+
+                # Filter out no-op corrections (where suggestion == original)
+                valid_corrections = [
+                    c for c in corrections if c.get("suggestion") != c.get("original")
+                ]
+
+                cleaned_results.append({
+                    "original_text": original,
+                    "is_correct": len(valid_corrections) == 0,
+                    "corrections": valid_corrections
+                })
+            
+            return cleaned_results
+
+        except json.JSONDecodeError:
+            print("Failed to decode JSON from Gemini API.")
+            return []
+
+    def batch_check_sentences(self, sentences: list[str], check_type: str) -> list:
+        """Send all sentences at once (no chunking)."""
+        if not sentences:
+            return []
+        
+        print(f"Processing {len(sentences)} sentences at once...")
+        return self._process_sentences(sentences, check_type)
