@@ -74,6 +74,7 @@ class GeminiClient:
                 temperature=0.0 # Set to 0 for maximum consistency
             )
             response = self.model.generate_content(prompt, generation_config=generation_config)
+            print(f"--- RAW RESPONSE FROM GEMINI ---\n{response.text}\n---------------------------------")
             return response.text
         except Exception as e:
             print(f"Error calling Gemini API: {e}")
