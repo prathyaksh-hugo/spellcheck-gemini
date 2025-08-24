@@ -83,6 +83,8 @@ def add_to_simple_ignore_list(word: str):
 @app.post("/v1/spell-check")
 async def spell_check(request: SpellCheckRequest):
     """Runs only the typo and brand rule check."""
+
+    print("Received for spell-check:", request.texts)
     start_time = time.time()
     batch_results = spell_checker.batch_check_sentences(request.texts, "TYPO_BRAND")
     end_time = time.time()
@@ -98,9 +100,10 @@ async def spell_check(request: SpellCheckRequest):
 @app.post("/v1/content-check")
 async def content_check(request: SpellCheckRequest):
     """Runs only the grammar and UX writing check."""
+
+    print("Received for content-check:", request.texts)
     start_time = time.time()
 
-    # --- THIS IS THE FIX ---
     # Filter the list to only include sentences with more than 3 words.
     texts_to_check = [
         sentence for sentence in request.texts if len(sentence.split()) > 3
