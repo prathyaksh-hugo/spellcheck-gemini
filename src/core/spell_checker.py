@@ -62,19 +62,28 @@ class SpellChecker:
             # ✅ Fix: Only mark is_correct = false if suggestion differs
             cleaned_results = []
             for r in results:
-                original = r.get("original_text")
+                original_text = r.get("original_text")
                 corrections = r.get("corrections", [])
 
-                # Filter out no-op corrections (where suggestion == original)
-                valid_corrections = [
-                    c for c in corrections if c.get("suggestion") != c.get("original")
-                ]
+                valid_corrections = []
+                for c in corrections:
+                # 1. Reconstruct the full sentence for any incomplete UX_WRITING suggestions
+                    if c.get("type") == "UX_WRITING" and c.get("original") != original_text:
+                    # If the AI returned a word instead of the sentence, fix it.
+                        c["suggestion"] = original_text.replace(c.get("original"), c.get("suggestion"))
+                        c["original"] = original_text
+                
+                # 2. Ensure there's an actual, visible change before adding it
+                    if c.get("suggestion") != c.get("original"):
+                        valid_corrections.append(c)
 
-                cleaned_results.append({
-                    "original_text": original,
+            # 3. Build the final, clean result object
+                    cleaned_results.append({
+                    "original_text": original_text,
                     "is_correct": len(valid_corrections) == 0,
                     "corrections": valid_corrections
                 })
+        
             
             return cleaned_results
 

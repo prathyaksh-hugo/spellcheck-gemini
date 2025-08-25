@@ -44,6 +44,9 @@ class GeminiClient:
         **Contextual Rules to Enforce (These are your source of truth):**
         {context_rules}
 
+        **CRITICAL OUTPUT RULE:**
+    For "UX_WRITING" corrections, the "suggestion" field MUST contain the complete, rewritten sentence. The "original" field MUST also contain the complete original sentence. DO NOT provide only the single word that was changed.
+
         After you have generated a `corrected_text`, you MUST compare it to the `original_text`.
         - If they are identical, you MUST set `is_correct` to `true` and the `corrections` array MUST be empty.
         - Only set `is_correct` to `false` if there is a genuine, visible change.
